@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en" className="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOEL JOHNSON — THE DATA EDITORIAL</title>
+    <script>
+        // Check for dark mode preference or system setting
+        const theme = localStorage.getItem('theme');
+        const systemIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (theme === 'dark' || (!theme && systemIsDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'vogue-green': '#2D6A4F',
+                        'vogue-dark': '#0A0A0A',
+                        'vogue-offwhite': '#F5F5F5',
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -14,32 +50,53 @@
             overflow-x: hidden;
             letter-spacing: -0.01em;
             line-height: 1.8;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
+
+        .dark body {
+            background-color: #0A0A0A;
+            color: #F5F5F5;
+        }
+
         .vogue-serif {
             font-family: 'Playfair Display', serif;
         }
+
         .vogue-accent {
-            color: #2D6A4F; /* Lighter Editorial Green */
+            color: #2D6A4F;
+            /* Lighter Editorial Green */
         }
+
         .bg-vogue-sand {
             background-color: #F9F8F6;
         }
+
         .vogue-border {
             border-color: #000000;
         }
-        .vogue-pink {
-            color: #2D6A4F; /* Updated for visibility */
+
+        .dark .vogue-border {
+            border-color: #2D6A4F;
         }
+
+        .vogue-pink {
+            color: #2D6A4F;
+            /* Updated for visibility */
+        }
+
         .bg-vogue-pink {
             background-color: #2D6A4F;
         }
+
         .border-vogue-pink {
             border-color: #2D6A4F;
         }
+
         ::selection {
             background: #2D6A4F;
             color: white;
         }
+
         .full-bleed {
             width: 100vw;
             position: relative;
@@ -48,13 +105,23 @@
             margin-left: -50vw;
             margin-right: -50vw;
         }
+
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .animate-fade-up {
             animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+
         /* Logo Styling */
         .jj-logo {
             font-family: 'Playfair Display', serif;
@@ -64,9 +131,19 @@
             font-size: 2rem;
             line-height: 1;
         }
-        .jj-logo .j1 { color: #000000; }
-        .jj-logo .j2 { color: #2D6A4F; }
-        .jj-logo .dot { color: #000000; font-size: 0.8em; }
+
+        .jj-logo .j1 {
+            color: #000000;
+        }
+
+        .jj-logo .j2 {
+            color: #2D6A4F;
+        }
+
+        .jj-logo .dot {
+            color: #000000;
+            font-size: 0.8em;
+        }
 
         .drop-cap::first-letter {
             float: left;
@@ -79,14 +156,18 @@
             text-transform: uppercase;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             line-height: 1.1;
         }
+
         p {
             margin-bottom: 1.5rem;
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
@@ -97,8 +178,10 @@
 }
 </script>
 </head>
+
 <body>
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

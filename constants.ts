@@ -28,16 +28,16 @@ export const PROJECTS: Project[] = [
     link: '#'
   },
   {
-    id: 'stock-market-predict',
-    title: 'Financial Trends',
-    subtitle: 'Using machine learning to understand market data.',
-    description: 'In this project, I studied how stock prices change over time. I looked at thousands of data points to find patterns that help predict if prices might go up or down. This helps investors make smarter choices when the market is confusing.',
-    objective: 'Build a tool that helps predict market trends accurately during economic shifts.',
-    tools: ['Python', 'Pandas', 'Scikit-learn', 'Streamlit'],
-    approach: 'I combined historical market data with news headlines to see how public mood affects stock prices.',
-    outcome: '12% Higher Accuracy',
-    year: '2024',
-    role: 'Data Analyst',
+    id: 'loan-approval',
+    title: 'Loan Approval Prediction System',
+    subtitle: 'End-to-end ML application for financial decision-making.',
+    description: 'An end-to-end machine learning application designed to predict whether a customer\'s loan request will be approved or rejected based on their financial profile, assets, and creditworthiness. The system uses data preprocessing, feature engineering, and supervised machine learning to analyze key factors such as income, loan amount, asset values, credit score (CIBIL), and employment status.',
+    objective: 'Predict loan approval outcomes to support financial decision-making and reduce lending risk.',
+    tools: ['Python', 'XGBoost', 'Scikit-learn', 'Streamlit', 'Joblib'],
+    approach: 'Multiple models were evaluated using cross-validation, with XGBoost selected as the final model. Built production-ready pipeline with feature engineering including debt-to-income ratio, loan-to-asset ratio, and total assets calculation.',
+    outcome: 'Real-time Predictions',
+    year: '2025',
+    role: 'ML Engineer',
     link: '#'
   },
   {
